@@ -8,7 +8,6 @@ public class Waggle : Spell {
 	public bool isLeftStick;
 	private float joystickInput;
 	private float lastWaggle = 1.0f;
-	private SpriteRenderer[] waggleSprites;
 
 	
 	// Use this for initialization
@@ -36,11 +35,7 @@ public class Waggle : Spell {
 	public bool waggleChanged(){
 		if (joystickInput == -lastWaggle) {
 			lastWaggle = joystickInput;
-			waggleSprites = GetComponentsInChildren<SpriteRenderer>();
-			foreach (SpriteRenderer sprite in waggleSprites)
-			{
-				sprite.enabled = !sprite.enabled;
-			}
+
 			return true;
 		}
 		return false;
@@ -48,7 +43,7 @@ public class Waggle : Spell {
 
 	public override void setLeftJoystick(bool isLeft) {
 			isLeftStick = isLeft;
-			axis = isLeftStick ?  "L_XAxis" : "R_Axis:";
+			axis = isLeftStick ?  "L_XAxis" : "R_XAxis";
 	}
 		
 

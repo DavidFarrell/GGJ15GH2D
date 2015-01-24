@@ -4,7 +4,7 @@ using System.Collections;
 public class Helicopter : Spell {
 
 	public string joystick = "R";
-	public bool isLeftStick = false;
+	private bool isLeftStick = false;
 	public bool clockwise = true;
 
 	private float XAxis;
