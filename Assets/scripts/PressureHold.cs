@@ -25,7 +25,6 @@ public class PressureHold : Spell {
 	}
 
 	protected void modifyPower(float powerChange){
-		Debug.Log("I belong here");
 		myPowerBarDual.currentPower += powerChange;
 		
 	}

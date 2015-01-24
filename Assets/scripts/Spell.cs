@@ -33,7 +33,6 @@ public class Spell : MonoBehaviour {
 	}
 
 	protected void modifyPower(float powerChange){
-		Debug.Log("I shuldn't be here");
 		myPowerBar.currentPower += powerChange;
 
 	}
