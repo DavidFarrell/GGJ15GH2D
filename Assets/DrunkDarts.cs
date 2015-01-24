@@ -28,7 +28,7 @@ public class DrunkDarts : Spell {
 	public float drunkBounds = 1.5f;
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
 		base.Start ();
 
 		if (!isLeftStick) {
