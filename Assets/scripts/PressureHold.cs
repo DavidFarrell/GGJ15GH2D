@@ -4,14 +4,36 @@ using System.Collections;
 public class PressureHold : Spell {
 
 	public string triggerChoice; //either "TriggersL" or "TriggersR"
-	float joystickInput;
+
+	private float joystickInput;
 	public float scaleFactor = 1;
+
+	private PowerBarDual myPowerBarDual;
+
 
 	// Use this for initialization
 	void Start () {
-		base.Start ();
+		time = timeDecaySpeed;
+		myPowerBarDual = GetComponent<PowerBarDual>();
+		myPowerBarDual.currentMinThreshold = 30;
+		myPowerBarDual.currentMaxThreshold = 60;
+		myPowerBarDual.currentPower = 0;
 	}
-	
+
+	public float currentPower(){
+		return myPowerBarDual.currentPower;
+	}
+
+	protected void modifyPower(float powerChange){
+		Debug.Log("I belong here");
+		myPowerBarDual.currentPower += powerChange;
+		
+	}
+
+	public bool thresholdCheck(){
+		return (myPowerBarDual.currentPower > myPowerBarDual.currentMinThreshold && myPowerBarDual.currentPower < myPowerBarDual.currentMaxThreshold);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		pollInput();
@@ -22,6 +44,15 @@ public class PressureHold : Spell {
 
 	void pollInput() {
 		joystickInput = Input.GetAxis (triggerChoice);
+	}
+
+	public void decayOverTime()
+	{
+		time -= Time.deltaTime;
+		if (time < 0) {
+			modifyPower (timeDecay);
+			time = timeDecaySpeed;
+		}
 	}
 	
 }
