@@ -26,12 +26,14 @@ public class CastSpell : MonoBehaviour {
 	}
 
 	private bool checkStatus() {
-		if (player1.GetComponentInChildren<Spell> ().thresholdCheck () && player2.GetComponentInChildren<Spell> ().thresholdCheck () && player3.GetComponentInChildren<Spell> ().thresholdCheck ()  ) {
-			if ( player4.GetComponentInChildren<Spell> ().thresholdCheck () ) {
-				Debug.Log ("YOU GOT IT");
+		if (player1.GetComponentInChildren<Spell> ().thresholdCheck () && player2.GetComponentInChildren<Spell> ().thresholdCheck () && player3.GetComponentInChildren<Spell> ().thresholdCheck ()) {
+			if (player4.GetComponentInChildren<Spell> ().thresholdCheck ()) {
+					Debug.Log ("YOU GOT IT");
 			}
 			return true;
-		} else
+		} else {
+				Debug.Log ("FAIL!");
 			return false;
+		}
 	}
 }
