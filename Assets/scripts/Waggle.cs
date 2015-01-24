@@ -24,7 +24,6 @@ public class Waggle : Spell {
 			modifyPower (powerIncrease);
 		} 
 		decayOverTime ();
-		Debug.Log (currentPower());
 
 	}
 	

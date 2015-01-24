@@ -317,7 +317,7 @@ MonoBehaviour:
   scoreDampening: 1.29999995
   scoreDistance: .75
   maxDrunkenness: 2.1099999
-  drunkChangeSpeed: 2.36999989
+  drunkChangeSpeed: 1.27999997
   hangoverDuration: 3
   drunkBounds: 1.5
 --- !u!114 &11490986
