@@ -17,6 +17,12 @@ public class PowerBar : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (currentPower > 100) {
+			currentPower = 100;
+		} else if (currentPower < 0) {
+			currentPower = 0;
+		}
+
 		spellPowerBar.value = currentPower;
 		spellThreshold.value = currentThreshold;
 

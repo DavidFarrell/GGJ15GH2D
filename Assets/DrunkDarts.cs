@@ -7,11 +7,18 @@ public class DrunkDarts : MonoBehaviour {
 
 	public string horizontalAxis = "L_XAxis";
 	public string verticalAxis = "L_YAxis";
-
+	
 	private float horizontalMovement;
 	private float verticalMovement;
 
+	private PowerBar myPowerBar;
 
+	public GameObject myTarget;
+	public GameObject myPlayer;
+
+	
+	public float speedDampening = 1;
+	public float scoreDampening = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -19,16 +26,30 @@ public class DrunkDarts : MonoBehaviour {
 			horizontalAxis = "R_XAxis";
 			verticalAxis = "R_YAxis";
 		}
+
+		myPowerBar = GetComponent<PowerBar>();
+		myPowerBar.currentThreshold = 80;
+		myPowerBar.currentPower = 0;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+		// player movement
 		pollInput ();
-		Debug.Log ("Horizontal: " + horizontalMovement + " : Vertical: " + verticalMovement);
+		horizontalMovement = horizontalMovement / speedDampening;
+		verticalMovement = (verticalMovement * -1) / speedDampening;
+		myPlayer.transform.Translate (new Vector2 (horizontalMovement,verticalMovement ));
 
 
+		// scoring
+		float distance = Vector2.Distance (myTarget.transform.position, myPlayer.transform.position);
+		float scoreImprovement = (1 - distance) / scoreDampening;
+		Debug.Log (scoreImprovement);
+		myPowerBar.currentPower += scoreImprovement;
 
+			//Vector3.Distance(other.position, transform.position);
 	}
 
 	// overrides
