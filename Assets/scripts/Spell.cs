@@ -4,6 +4,7 @@ using System.Collections;
 public class Spell : MonoBehaviour {
 
 	public int timeDecay = -1;
+	public float timeDecaySpeed = 0.5f;
 	public int powerTarget = 100;
 	public int powerIncrease = 5;
 	public int powerDecrease = 10;
@@ -11,10 +12,11 @@ public class Spell : MonoBehaviour {
 
 	private int power;
 	private int failures = 0;
+	private float time;
 
 	// Use this for initialization
 	void Start () {
-	
+		time = timeDecaySpeed;
 	}
 	
 	// Update is called once per frame
@@ -45,9 +47,14 @@ public class Spell : MonoBehaviour {
 		return power > powerTarget;
 	}
 
-
-	public void testme()
+	public void decayOverTime()
 	{
-		Debug.Log ("inherit");
+		time -= Time.deltaTime;
+		if (time < 0) {
+			modifyPower (timeDecay);
+			time = timeDecaySpeed;
+		}
 	}
+
+
 }
