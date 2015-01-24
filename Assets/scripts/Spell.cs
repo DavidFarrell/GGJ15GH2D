@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Spell : MonoBehaviour {
 
-	public int timeDecay = -1;
+	public float timeDecay = -1.0f;
 	public float timeDecaySpeed = 0.5f;
-	public int powerTarget = 100;
-	public int powerIncrease = 5;
-	public int powerDecrease = 10;
+	//public int powerTarget = 100;
+	public float powerIncrease = 5.0f;
+	public float powerDecrease = 10.0f;
 
-
+	private PowerBar myPowerBar;
 	private int power;
 	private int failures = 0;
 	private float time;
@@ -17,6 +17,9 @@ public class Spell : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		time = timeDecaySpeed;
+		myPowerBar = GetComponent<PowerBar>();
+
+
 	}
 	
 	// Update is called once per frame
@@ -24,12 +27,13 @@ public class Spell : MonoBehaviour {
 	
 	}
 
-	public int currentPower(){
-		return power;
+	public float currentPower(){
+		return myPowerBar.currentPower;
 	}
 
-	public void modifyPower(int powerChange){
-		power += powerChange;
+	public void modifyPower(float powerChange){
+		myPowerBar.currentPower += powerChange;
+
 	}
 
 	public int currentFailures(){
@@ -44,7 +48,7 @@ public class Spell : MonoBehaviour {
 	}
 
 	public bool thresholdCheck(){
-		return power > powerTarget;
+		return myPowerBar.currentPower > myPowerBar.currentThreshold;
 	}
 
 	public void decayOverTime()
