@@ -878,10 +878,10 @@ MonoBehaviour:
   speedDampening: 6
   scoreDampening: 1.29999995
   scoreDistance: .75
-  maxDrunkenness: 2.1099999
+  maxDrunkenness: 1.89999998
   drunkChangeSpeed: 2.36999989
   hangoverDuration: 3
-  drunkBounds: 1.5
+  drunkBounds: 1.05999994
 --- !u!1 &409065090
 GameObject:
   m_ObjectHideFlags: 0

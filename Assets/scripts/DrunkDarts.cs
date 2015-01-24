@@ -38,7 +38,9 @@ public class DrunkDarts : Spell {
 
 		currentForce = new Vector2 (0, 0);
 		updateDrunkVector();
-		
+		myPlayer.transform.localPosition = myTarget.transform.localPosition;
+
+
 	}
 	
 	// Update is called once per frame
@@ -53,28 +55,36 @@ public class DrunkDarts : Spell {
 		// being drunk
 		updateDrunkVector();
 		currentForce = iTween.Vector2Update (currentForce, targetForce, drunkChangeSpeed);
-		//myPlayer.rigidbody2D.AddForce (currentForce);
+		myPlayer.rigidbody2D.AddForce (currentForce);
 
 		// bounds
-		// too far left
-		if ((myTarget.transform.position.x + myPlayer.transform.position.x) < -drunkBounds) {
-			myPlayer.transform.position = new Vector2( (myTarget.transform.position.x - drunkBounds) , myPlayer.transform.position.y);
+
+
+
+		/* too far left
+		if ((myTarget.transform.localPosition.x + myPlayer.transform.localPosition.x) < -drunkBounds) {
+			myPlayer.transform.localPosition = new Vector2( (myTarget.transform.localPosition.x - drunkBounds) , myPlayer.transform.localPosition.y);
 		}
 		// too far right
-		if ((myPlayer.transform.position.x - myTarget.transform.position.x) > drunkBounds) {
-			myPlayer.transform.position = new Vector2( (myTarget.transform.position.x + drunkBounds) , myPlayer.transform.position.y);
+		if ((myPlayer.transform.localPosition.x - myTarget.transform.localPosition.x) > drunkBounds) {
+			myPlayer.transform.localPosition = new Vector2( (myTarget.transform.localPosition.x + drunkBounds) , myPlayer.transform.localPosition.y);
 		} 
 		// too high
-		if ( (myPlayer.transform.position.y - myTarget.transform.position.y) > drunkBounds) {
-			myPlayer.transform.position = new Vector2( myPlayer.transform.position.x,  (myTarget.transform.position.y + drunkBounds) );
+		if ( (myPlayer.transform.localPosition.y - myTarget.transform.position.y) > drunkBounds) {
+			myPlayer.transform.localPosition = new Vector2( myPlayer.transform.position.x,  (myTarget.transform.localPosition.y + drunkBounds) );
 		}
 		// too low
-		if ( (myPlayer.transform.position.y - myTarget.transform.position.y ) <  -drunkBounds) {
-			myPlayer.transform.position = new Vector2( myPlayer.transform.position.x,  (myTarget.transform.position.y - drunkBounds) );
-		}
+		if ( (myPlayer.transform.localPosition.y - myTarget.transform.localPosition.y ) <  -drunkBounds) {
+			myPlayer.transform.localPosition = new Vector2( myPlayer.transform.localPosition.x,  (myTarget.transform.localPosition.y - drunkBounds) );
+		}*/
+		Vector2 temp = new Vector2 (0, 0);
+		temp.x =  Mathf.Clamp (myPlayer.transform.localPosition.x, -drunkBounds, drunkBounds);
+		temp.y =  Mathf.Clamp (myPlayer.transform.localPosition.y, -drunkBounds, drunkBounds);
+		myPlayer.transform.localPosition = temp;
+
 
 		// scoring
-		float distance = Vector2.Distance (myTarget.transform.position, myPlayer.transform.position);
+		float distance = Vector2.Distance (myTarget.transform.localPosition, myPlayer.transform.localPosition);
 		float scoreImprovement = (scoreDistance - distance) / scoreDampening;
 		modifyPower (scoreImprovement);
 	}
