@@ -8,10 +8,11 @@ public class PatternBash : MonoBehaviour {
 	private bool[] oldPresses = new bool[4]; /*ABXY, 1 is pressed 0 is depressed*/
 	private bool[] keyPresses = new bool[4]; 
 	private int cursor = 0;
+	string currentButton;
 	
 	// Use this for initialization
 	void Start () {
-
+		//TODO: UI element initialise for the first button
 	
 	}
 	
@@ -21,22 +22,22 @@ public class PatternBash : MonoBehaviour {
 		oldPresses = copyBool(keyPresses);
 		keyPresses = new bool[]{false,false,false,false};
 
-	
+		//TODO: Draw UI element for the current button
 		pollInput ();
 		
 		if (differentButtons() && !buttonsEmpty()) {
 			if(multiplePresses()) {
 				failPress();
 			}
-			else if (Input.GetButtonDown(getNextButton())) {
+			else if (Input.GetButtonDown(currentButton = getNextButton())) {
 				successPress();
-
 			} else failPress();
 		}
  	
 		
 	}
 
+	/*Fills keyPresses with booleans as to whether or not that button has been pressed*/
 	void pollInput() {
 		if (Input.GetButtonDown("ButtonA")) {
 			keyPresses[0] = true;
@@ -52,13 +53,15 @@ public class PatternBash : MonoBehaviour {
 		}
 	}
 
+	/*Gets the next button that a check needs to be made for, and cycles it to the next in the pattern*/
 	string getNextButton() {
-		if (cursor = pattern.Length) cursor = 0;
+		if (cursor == pattern.Length) cursor = 0;
 		cursor++;
 
 		return "Button" + pattern[cursor-1];
 	}
 
+	/*Checks that the face buttons are not pressed*/
 	bool buttonsEmpty() {
 		for(int i = 0; i < 4; i++) {
 			if (keyPresses[i]) return false;
@@ -84,10 +87,13 @@ public class PatternBash : MonoBehaviour {
 		return false;
 	}
 
+	/*When the correct button is pressed in the right order and other buttons aren't
+	 pressed this function should be called.*/
 	void successPress(){
 		Debug.Log("Hit!");
 		//Increase the player's health-bar or something
 	}
+	/*multiple presses or wrong presses run this function*/
 	void failPress() {
 		Debug.Log("Fail!");
 		//Reduce the player's health or something
