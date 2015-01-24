@@ -1,4 +1,5 @@
 Master Bank.bank
 Master Bank.strings.bank
 Music.bank
+Single Shot Mod.bank
 Single Shot.bank
