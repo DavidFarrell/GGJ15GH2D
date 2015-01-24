@@ -67,7 +67,11 @@ public class Helicopter : Spell {
 	// overrides
 	void pollInput() {
 		XAxis = Input.GetAxis (joystick + "_XAxis");
+		if (XAxis > 0.8f) XAxis = 1;
+		if (XAxis < -0.8f) XAxis = -1;
 		YAxis = Input.GetAxis (joystick + "_YAxis");
+		if (YAxis > 0.8f) YAxis = 1;
+		if (YAxis < -0.8f) YAxis = -1;
 	}
 
 }

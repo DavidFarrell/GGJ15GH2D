@@ -31,6 +31,8 @@ public class Waggle : Spell {
 	// overrides
 	void pollInput() {
 		joystickInput = Input.GetAxis (axis);
+		if (joystickInput > 0.8f) joystickInput = 1;
+		if (joystickInput < -0.8f) joystickInput = -1;
 	}
 	
 	public bool waggleChanged(){
