@@ -27,8 +27,14 @@ public class SpellBook : MonoBehaviour {
 	}
 
 	public void assignSpells(){
+		GameObject leftJoySpell = joystickSpells [Random.Range (0, joystickSpells.Length -1)];
+		//leftJoySpell.GetComponent<Spell>()
 
+		GameObject rightJoySpell = joystickSpells [Random.Range (0, joystickSpells.Length -1)];
 
+		GameObject faceSpell = faceSpells [Random.Range (0, joystickSpells.Length -1)];
+
+		GameObject triggerSpell = triggerSpells [Random.Range (0, joystickSpells.Length -1)];
 	}
 
 
