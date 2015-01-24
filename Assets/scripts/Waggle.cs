@@ -16,6 +16,6 @@ public class Waggle : MonoBehaviour {
 	}
 
 
-	ß
+
 
 }
