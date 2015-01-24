@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class powerBar : MonoBehaviour {
+public class PowerBar : MonoBehaviour {
 
 	public Slider spellPowerBar; // ref for the slider
 	public float currentPower;
