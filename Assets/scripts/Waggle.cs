@@ -21,7 +21,7 @@ public class Waggle : Spell {
 		
 		pollInput ();
 		if (waggleChanged ()) {
-			modifyPower (10);
+			modifyPower (powerIncrease);
 		} else
 			modifyPower (timeDecay);
 		//	Debug.Log (joystickInput);
