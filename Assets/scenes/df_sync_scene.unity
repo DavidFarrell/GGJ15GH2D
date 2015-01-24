@@ -703,6 +703,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11403240, guid: 2f995763023a34cf2ababcf19247abf7, type: 2}
+      propertyPath: currentMaxThreshold
+      value: 99.9000015
+      objectReference: {fileID: 0}
+    - target: {fileID: 11403240, guid: 2f995763023a34cf2ababcf19247abf7, type: 2}
+      propertyPath: currentMinThreshold
+      value: 34.5999985
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f995763023a34cf2ababcf19247abf7, type: 2}
   m_RootGameObject: {fileID: 1178721541}
@@ -1285,6 +1293,10 @@ Prefab:
     - target: {fileID: 407948, guid: 20ecaf7911640485ca12978bc7be7058, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11407958, guid: 20ecaf7911640485ca12978bc7be7058, type: 2}
+      propertyPath: timeDecay
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 20ecaf7911640485ca12978bc7be7058, type: 2}
@@ -2480,8 +2492,8 @@ MonoBehaviour:
   maxThresholdSlider: {fileID: 694768630}
   minThresholdSlider: {fileID: 372765823}
   currentPower: 0
-  currentMaxThreshold: 60
-  currentMinThreshold: 40
+  currentMaxThreshold: 99.9000015
+  currentMinThreshold: 34.5999985
 --- !u!114 &1178721544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3371,7 +3383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80c268d7582142c5b7d8a689ba06048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeDecay: -1
+  timeDecay: -0
   timeDecaySpeed: .0500000007
   powerIncrease: 5
   powerDecrease: 10
@@ -3503,7 +3515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afa9354a791a94aaaa30bf2b345af18f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeDecay: -10
+  timeDecay: -0
   timeDecaySpeed: .5
   powerIncrease: 5
   powerDecrease: 10
@@ -3674,6 +3686,10 @@ Prefab:
     - target: {fileID: 412778, guid: 29167e6f4647e42b7b42f82dcde11d73, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11412778, guid: 29167e6f4647e42b7b42f82dcde11d73, type: 2}
+      propertyPath: timeDecay
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29167e6f4647e42b7b42f82dcde11d73, type: 2}
