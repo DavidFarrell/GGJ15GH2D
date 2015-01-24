@@ -19,7 +19,7 @@ public class PatternBash : Spell {
 	// Update is called once per frame
 	void Update () {
 		//Reset keypresses and store previous
-		testme();
+
 
 
 		oldPresses = copyBool(keyPresses);
