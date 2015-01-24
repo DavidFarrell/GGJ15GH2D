@@ -98,4 +98,8 @@ public class DrunkDarts : Spell {
 		horizontalMovement = Input.GetAxis (horizontalAxis);
 		verticalMovement = Input.GetAxis (verticalAxis);
 	}
+
+	public override void setLeftJoystick(bool isLeft){
+		isLeftStick = isLeft;
+	}
 }

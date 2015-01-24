@@ -28,13 +28,20 @@ public class SpellBook : MonoBehaviour {
 
 	public void assignSpells(){
 		GameObject leftJoySpell = joystickSpells [Random.Range (0, joystickSpells.Length -1)];
-		//leftJoySpell.GetComponent<Spell>()
+		//leftJoySpell.GetComponent<Spell> ().setLeftJoystick (true);
+
+		Player1Spell = (GameObject)Instantiate (leftJoySpell);
+		Player1Spell.GetComponent<Spell> ().setLeftJoystick (true);
 
 		GameObject rightJoySpell = joystickSpells [Random.Range (0, joystickSpells.Length -1)];
+		//leftJoySpell.GetComponent<Spell> ().setLeftJoystick (false);
 
 		GameObject faceSpell = faceSpells [Random.Range (0, joystickSpells.Length -1)];
 
 		GameObject triggerSpell = triggerSpells [Random.Range (0, joystickSpells.Length -1)];
+
+
+
 	}
 
 

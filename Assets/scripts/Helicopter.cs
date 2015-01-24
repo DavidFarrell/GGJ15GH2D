@@ -4,6 +4,7 @@ using System.Collections;
 public class Helicopter : Spell {
 
 	public string joystick = "R";
+	public bool isLeftStick = false;
 	public bool clockwise = true;
 
 	private float XAxis;
@@ -64,12 +65,25 @@ public class Helicopter : Spell {
 		return false;
 	}
 
+	public override void setLeftJoystick(bool isLeft){
+		isLeftStick = isLeft;
+		}
+
 	// overrides
 	void pollInput() {
-		XAxis = Input.GetAxis (joystick + "_XAxis");
+
+		if (isLeftStick) {
+			XAxis = Input.GetAxis ("L_XAxis");
+			YAxis = Input.GetAxis ("L_YAxis");
+				}
+		else{
+			XAxis = Input.GetAxis ("R_XAxis");
+			YAxis = Input.GetAxis ("R_YAxis");
+		}
+
 		if (XAxis > 0.8f) XAxis = 1;
 		if (XAxis < -0.8f) XAxis = -1;
-		YAxis = Input.GetAxis (joystick + "_YAxis");
+
 		if (YAxis > 0.8f) YAxis = 1;
 		if (YAxis < -0.8f) YAxis = -1;
 	}

@@ -48,8 +48,13 @@ public class Spell : MonoBehaviour {
 	void pollInput (){
 	}
 
+
+
 	public virtual bool thresholdCheck(){
 		return myPowerBar.currentPower > myPowerBar.currentThreshold;
+	}
+
+	public virtual void setLeftJoystick (bool isLeft){
 	}
 
 	public void decayOverTime()
