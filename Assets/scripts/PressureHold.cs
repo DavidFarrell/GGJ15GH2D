@@ -34,14 +34,14 @@ public class PressureHold : Spell {
 	}
 
 	// Update is called once per frame
-	new void Update () {
+	void Update () {
 		pollInput();
 		timeDecay = scaleFactor * joystickInput;
 		decayOverTime();
 		Debug.Log (joystickInput);
 	}
 
-	new void pollInput() {
+	void pollInput() {
 		joystickInput = Input.GetAxis (triggerChoice);
 	}
 

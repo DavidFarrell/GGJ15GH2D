@@ -38,7 +38,7 @@ public class PatternBash : Spell {
 
 	
 	// Use this for initialization
-	void Start () {
+	new void Start () {
 		base.Start();
 		//Get First Button to highlight
 		currentButton = "Button" + pattern[0];
