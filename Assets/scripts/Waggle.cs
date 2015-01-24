@@ -26,8 +26,6 @@ public class Waggle : Spell {
 		decayOverTime ();
 		Debug.Log (currentPower());
 
-		
-		
 	}
 	
 	
