@@ -61,6 +61,7 @@ public class Helicopter : Spell {
 	}
 
 	bool checkForBadInput(){
+		return false;
 	}
 
 	// overrides
