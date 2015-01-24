@@ -39,7 +39,7 @@ public class PatternBash : Spell {
 	
 	// Use this for initialization
 	void Start () {
-
+		base.Start();
 		//Get First Button to highlight
 		currentButton = "Button" + pattern[0];
 		faceDict.TryGetValue(currentButton,out buttonValue);
@@ -78,7 +78,7 @@ public class PatternBash : Spell {
 			faceDict.TryGetValue(currentButton,out buttonValue);
 			ButtonsOverlay.GetComponent<UI_Glyphs_PressThis>().faceID = buttonValue; //Sets the next correct button to be highlighted.
 		}
- 	
+		decayOverTime();
 		
 	}
 
@@ -140,13 +140,11 @@ public class PatternBash : Spell {
 	/*When the correct button is pressed in the right order and other buttons aren't
 	 pressed this function should be called.*/
 	protected void successPress(){
-		Debug.Log("Hit!");
-		//Increase the player's health-bar or something
+		modifyPower(powerIncrease);
 	}
 	/*multiple presses or wrong presses run this function*/
 	protected void failPress() {
-		Debug.Log("Fail!");
-		//Reduce the player's health or something
+		modifyPower(-powerDecrease);
 	}
 
 	//Deep copy of boolean array for button pressing.

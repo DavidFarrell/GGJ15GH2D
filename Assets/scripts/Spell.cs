@@ -12,7 +12,7 @@ public class Spell : MonoBehaviour {
 	private PowerBar myPowerBar;
 	private int power;
 	private int failures = 0;
-	private float time;
+	protected float time;
 
 	// Use this for initialization
 	protected void Start () {
