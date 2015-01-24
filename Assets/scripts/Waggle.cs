@@ -5,9 +5,7 @@ using System.Collections;
 public class Waggle : Spell {
 	
 	public string axis = "R_XAxis";
-
-
-	
+	public bool isLeftStick;
 	private float joystickInput;
 	private float lastWaggle = 1.0f;
 	private SpriteRenderer[] waggleSprites;
@@ -46,8 +44,13 @@ public class Waggle : Spell {
 			return true;
 		}
 		return false;
-		
 	}
-	
 
+	public override void setLeftJoystick(bool isLeft) {
+			isLeftStick = isLeft;
+			axis = isLeftStick ?  "L_XAxis" : "R_Axis:";
+	}
+		
+
+	
 }
