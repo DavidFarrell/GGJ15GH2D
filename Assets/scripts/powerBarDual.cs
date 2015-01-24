@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class powerBarDual : MonoBehaviour {
+public class PowerBarDual : MonoBehaviour {
 
 	public Slider spellPowerBar; // ref for the slider
 	public Slider maxThresholdSlider;
