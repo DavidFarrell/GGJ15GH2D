@@ -39,6 +39,7 @@ public class Helicopter : Spell {
 		if (checkForNextInput()) {
 			modifyPower(powerIncrease);
 		}
+
 		decayOverTime ();
 		Debug.Log (currentPower ());
 		
@@ -56,11 +57,10 @@ public class Helicopter : Spell {
 			XWaggle = XAxis;
 			return true;
 		}
-
-
-
-
 		return false;
+	}
+
+	bool checkForBadInput(){
 	}
 
 	// overrides
