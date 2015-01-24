@@ -5,8 +5,8 @@ using System.Collections;
 public class PatternBash : Spell {
 
 	public string pattern; /*Pattern string containing letters A,B,X or Y e.g "ABXY"*/
-	private bool[] oldPresses = new bool[4]; /*ABXY, 1 is pressed 0 is depressed*/
-	private bool[] keyPresses = new bool[4]; 
+	protected bool[] oldPresses = new bool[4]; /*ABXY, 1 is pressed 0 is depressed*/
+	protected bool[] keyPresses = new bool[4]; 
 	private int cursor = 0;
 	string currentButton;
 	
@@ -39,7 +39,7 @@ public class PatternBash : Spell {
 	}
 
 	/*Fills keyPresses with booleans as to whether or not that button has been pressed*/
-	void pollInput() {
+	protected void pollInput() {
 		if (Input.GetButtonDown("ButtonA")) {
 			keyPresses[0] = true;
 		}
@@ -63,7 +63,7 @@ public class PatternBash : Spell {
 	}
 
 	/*Checks that the face buttons are not pressed*/
-	bool buttonsEmpty() {
+	protected bool buttonsEmpty() {
 		for(int i = 0; i < 4; i++) {
 			if (keyPresses[i]) return false;
 		}
@@ -71,7 +71,7 @@ public class PatternBash : Spell {
 	}
 
 	//If two keys are pressed the program fails
-	bool multiplePresses() {
+	protected bool multiplePresses() {
 		int multiPress = 0;
 		for (int i = 0; i < 4; i++) {
 			if (keyPresses[i]) multiPress++;
@@ -81,7 +81,7 @@ public class PatternBash : Spell {
 	}
 
 	//Run an XOR check between buttons to determine if the user has made an input
-	bool differentButtons() {
+	protected bool differentButtons() {
 		for (int i = 0; i < 4; i ++) {
 			if (oldPresses[i] ^ keyPresses[i]) return true;
 		}
@@ -90,17 +90,17 @@ public class PatternBash : Spell {
 
 	/*When the correct button is pressed in the right order and other buttons aren't
 	 pressed this function should be called.*/
-	void successPress(){
+	protected void successPress(){
 		Debug.Log("Hit!");
 		//Increase the player's health-bar or something
 	}
 	/*multiple presses or wrong presses run this function*/
-	void failPress() {
+	protected void failPress() {
 		Debug.Log("Fail!");
 		//Reduce the player's health or something
 	}
 
-	bool[] copyBool(bool[] keyPresses) {
+	protected bool[] copyBool(bool[] keyPresses) {
 		bool[] presses = new bool[keyPresses.Length];
 		for (int i = 0; i < keyPresses.Length;i++) {
 			presses[i] = keyPresses[i];
