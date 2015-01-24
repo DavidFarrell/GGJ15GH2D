@@ -19,9 +19,11 @@ public class PatternBash : Spell {
 	// Update is called once per frame
 	void Update () {
 		//Reset keypresses and store previous
+		testme();
+
+
 		oldPresses = copyBool(keyPresses);
 		keyPresses = new bool[]{false,false,false,false};
-
 
 		//TODO: Draw UI element for the current button
 		pollInput ();
@@ -39,7 +41,6 @@ public class PatternBash : Spell {
 	}
 
 	/*Fills keyPresses with booleans as to whether or not that button has been pressed*/
-	//Overrides
 	void pollInput() {
 		if (Input.GetButtonDown("ButtonA")) {
 			keyPresses[0] = true;
@@ -70,7 +71,7 @@ public class PatternBash : Spell {
 		}
 		return true;
 	}
-	
+
 	//If two keys are pressed the program fails
 	bool multiplePresses() {
 		int multiPress = 0;
@@ -93,12 +94,11 @@ public class PatternBash : Spell {
 	 pressed this function should be called.*/
 	void successPress(){
 		Debug.Log("Hit!");
-		modifyPower(5);
+		//Increase the player's health-bar or something
 	}
 	/*multiple presses or wrong presses run this function*/
 	void failPress() {
 		Debug.Log("Fail!");
-		modifyPower (-10);
 		//Reduce the player's health or something
 	}
 
