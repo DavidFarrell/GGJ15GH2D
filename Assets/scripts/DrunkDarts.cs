@@ -53,7 +53,7 @@ public class DrunkDarts : Spell {
 		// being drunk
 		updateDrunkVector();
 		currentForce = iTween.Vector2Update (currentForce, targetForce, drunkChangeSpeed);
-		myPlayer.rigidbody2D.AddForce (currentForce);
+		//myPlayer.rigidbody2D.AddForce (currentForce);
 
 		// bounds
 		// too far left

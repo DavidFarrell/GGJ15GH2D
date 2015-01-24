@@ -18,7 +18,7 @@ public class Spell : MonoBehaviour {
 	protected void Start () {
 		time = timeDecaySpeed;
 		myPowerBar = GetComponent<PowerBar>();
-		myPowerBar.currentThreshold = 80;
+		myPowerBar.currentThreshold = 10;
 		myPowerBar.currentPower = 0;
 
 	}
@@ -48,7 +48,7 @@ public class Spell : MonoBehaviour {
 	void pollInput (){
 	}
 
-	public bool thresholdCheck(){
+	public virtual bool thresholdCheck(){
 		return myPowerBar.currentPower > myPowerBar.currentThreshold;
 	}
 

@@ -15,9 +15,10 @@ public class PressureHold : Spell {
 	new void Start () {
 		time = timeDecaySpeed;
 		myPowerBarDual = GetComponent<PowerBarDual>();
-		myPowerBarDual.currentMinThreshold = 30;
-		myPowerBarDual.currentMaxThreshold = 60;
+		myPowerBarDual.currentMinThreshold = 10;
+		myPowerBarDual.currentMaxThreshold = 100;
 		myPowerBarDual.currentPower = 0;
+
 	}
 
 	new public float currentPower(){
@@ -29,8 +30,14 @@ public class PressureHold : Spell {
 		
 	}
 
-	new public bool thresholdCheck(){
-		return (myPowerBarDual.currentPower > myPowerBarDual.currentMinThreshold && myPowerBarDual.currentPower < myPowerBarDual.currentMaxThreshold);
+	 public override bool thresholdCheck(){
+		bool pass = false;
+		if (myPowerBarDual.currentPower > myPowerBarDual.currentMinThreshold && myPowerBarDual.currentPower < myPowerBarDual.currentMaxThreshold) {
+			pass = true;
+		} else {
+			pass = false;
+		}
+		return pass;
 	}
 
 	// Update is called once per frame
@@ -38,7 +45,11 @@ public class PressureHold : Spell {
 		pollInput();
 		timeDecay = scaleFactor * joystickInput;
 		decayOverTime();
-		Debug.Log (joystickInput);
+
+		if (myPowerBarDual.currentPower < 0)
+						myPowerBarDual.currentPower = 0;
+		if (myPowerBarDual.currentPower > 100)
+						myPowerBarDual.currentPower = 100;
 	}
 
 	void pollInput() {
