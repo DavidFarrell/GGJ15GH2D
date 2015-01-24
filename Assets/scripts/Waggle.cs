@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Waggle : MonoBehaviour {
+public class Waggle : Spell {
 	
 	public string axis = "R_XAxis";
-	public int powerLeak = -1;
+
 	
 	private float joystickInput;
 	private float lastWaggle = 1.0f;
-	private int power = 0;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -23,15 +23,15 @@ public class Waggle : MonoBehaviour {
 		if (waggleChanged ()) {
 			modifyPower (10);
 		} else
-			modifyPower (powerLeak);
+			modifyPower (decay);
 		//	Debug.Log (joystickInput);
-		Debug.Log (power);
+		Debug.Log (currentPower());
 		
 		
 	}
 	
 	
-
+	// overrides
 	void pollInput() {
 		joystickInput = Input.GetAxis (axis);
 	}
@@ -45,7 +45,5 @@ public class Waggle : MonoBehaviour {
 		
 	}
 	
-	public void modifyPower(int powerChange){
-		power += powerChange;
-	}
+
 }
