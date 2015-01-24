@@ -2,7 +2,7 @@
 using System.Collections;
 
 /**Logic for the patternbash controls on the face buttons*/
-public class PatternBash : MonoBehaviour {
+public class PatternBash : Spell {
 
 	public string pattern; /*Pattern string containing letters A,B,X or Y e.g "ABXY"*/
 	private bool[] oldPresses = new bool[4]; /*ABXY, 1 is pressed 0 is depressed*/
@@ -19,6 +19,9 @@ public class PatternBash : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//Reset keypresses and store previous
+		testme();
+
+
 		oldPresses = copyBool(keyPresses);
 		keyPresses = new bool[]{false,false,false,false};
 
