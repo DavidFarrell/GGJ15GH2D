@@ -3,9 +3,10 @@ using System.Collections;
 
 public class Spell : MonoBehaviour {
 
-	public int decay = -1;
+	public int timeDecay = -1;
 	public int powerTarget = 100;
-
+	public int powerIncrease = 5;
+	public int powerDecrease = 10;
 
 
 	private int power;
@@ -37,12 +38,12 @@ public class Spell : MonoBehaviour {
 		failures += failureChange;
 	}
 
+	public bool thresholdCheck(){
+		return power > powerTarget;
+	}
+
 	void pollInput (){
 	}
 
 
-	public void testme()
-	{
-		Debug.Log ("inherit");
-	}
 }
