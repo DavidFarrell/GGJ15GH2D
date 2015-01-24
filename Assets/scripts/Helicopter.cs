@@ -42,7 +42,7 @@ public class Helicopter : Spell {
 		}
 
 		decayOverTime ();
-		Debug.Log (currentPower ());
+//		Debug.Log (currentPower ());
 		
 	}
 

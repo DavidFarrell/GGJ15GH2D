@@ -38,7 +38,10 @@ public class SpellBook : MonoBehaviour {
 
 		GameObject faceSpell = faceSpells [Random.Range (0, joystickSpells.Length -1)];
 
-		GameObject triggerSpell = triggerSpells [Random.Range (0, joystickSpells.Length -1)];
+		Debug.Log ("range");
+		Debug.Log (triggerSpells.Length);
+		Debug.Log ("range");
+		GameObject triggerSpell = triggerSpells [Random.Range (0, triggerSpells.Length -1)];
 
 
 
