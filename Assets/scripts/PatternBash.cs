@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -39,6 +39,7 @@ public class PatternBash : Spell {
 	
 	// Use this for initialization
 	void Start () {
+
 		//Get First Button to highlight
 		currentButton = "Button" + pattern[0];
 		faceDict.TryGetValue(currentButton,out buttonValue);
@@ -61,11 +62,9 @@ public class PatternBash : Spell {
 	// Update is called once per frame
 	void Update () {
 		//Reset keypresses and store previous
-
 		oldPresses = copyBool(keyPresses);
 		keyPresses = new bool[]{false,false,false,false};
 
-		//TODO: Draw UI element for the current button
 		pollInput ();
 		
 		if (differentButtons() && !buttonsEmpty()) {
@@ -75,9 +74,9 @@ public class PatternBash : Spell {
 			else if (Input.GetButtonDown(currentButton)) {
 				successPress();
 			} else failPress();
-			currentButton = getNextButton();
+			currentButton = getNextButton();					//When one or more face buttons are pressed cycle the next button to be presed
 			faceDict.TryGetValue(currentButton,out buttonValue);
-			ButtonsOverlay.GetComponent<UI_Glyphs_PressThis>().faceID = buttonValue;
+			ButtonsOverlay.GetComponent<UI_Glyphs_PressThis>().faceID = buttonValue; //Sets the next correct button to be highlighted.
 		}
  	
 		
@@ -150,6 +149,7 @@ public class PatternBash : Spell {
 		//Reduce the player's health or something
 	}
 
+	//Deep copy of boolean array for button pressing.
 	protected bool[] copyBool(bool[] keyPresses) {
 		bool[] presses = new bool[keyPresses.Length];
 		for (int i = 0; i < keyPresses.Length;i++) {
