@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DrunkDarts : MonoBehaviour {
+public class DrunkDarts : Spell {
 	public bool isLeftStick = true;
 
 
@@ -11,7 +11,7 @@ public class DrunkDarts : MonoBehaviour {
 	private float horizontalMovement;
 	private float verticalMovement;
 
-	private PowerBar myPowerBar;
+
 
 	public GameObject myTarget;
 	public GameObject myPlayer;
@@ -19,17 +19,17 @@ public class DrunkDarts : MonoBehaviour {
 	
 	public float speedDampening = 1;
 	public float scoreDampening = 1;
+	public float scoreDistance = 1;
 
 	// Use this for initialization
 	void Start () {
+		base.Start ();
+
 		if (!isLeftStick) {
 			horizontalAxis = "R_XAxis";
 			verticalAxis = "R_YAxis";
 		}
 
-		myPowerBar = GetComponent<PowerBar>();
-		myPowerBar.currentThreshold = 80;
-		myPowerBar.currentPower = 0;
 
 	}
 	
@@ -45,10 +45,9 @@ public class DrunkDarts : MonoBehaviour {
 
 		// scoring
 		float distance = Vector2.Distance (myTarget.transform.position, myPlayer.transform.position);
-		float scoreImprovement = (1 - distance) / scoreDampening;
+		float scoreImprovement = (scoreDistance - distance) / scoreDampening;
 		Debug.Log (scoreImprovement);
-		myPowerBar.currentPower += scoreImprovement;
-
+		modifyPower (scoreImprovement);
 			//Vector3.Distance(other.position, transform.position);
 	}
 

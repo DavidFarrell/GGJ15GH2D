@@ -15,10 +15,11 @@ public class Spell : MonoBehaviour {
 	private float time;
 
 	// Use this for initialization
-	void Start () {
+	protected void Start () {
 		time = timeDecaySpeed;
 		myPowerBar = GetComponent<PowerBar>();
-
+		myPowerBar.currentThreshold = 80;
+		myPowerBar.currentPower = 0;
 
 	}
 	
