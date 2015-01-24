@@ -1226,7 +1226,7 @@ MonoBehaviour:
   BlueWizard: {fileID: 51279349}
   GreenWizard: {fileID: 675386350}
   YellowWizard: {fileID: 518789137}
-  testRed: 0
+  testRed: 1
   testBlue: 0
   testGreen: 0
   testYellow: 0
