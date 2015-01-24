@@ -3,7 +3,7 @@ using System.Collections;
 
 public class UI_Glyphs_PressThis : MonoBehaviour {
 
-	public int faceID;
+	public int faceID = 0;
 	public Transform ALocation;
 	public Transform BLocation;
 	public Transform XLocation;
@@ -18,7 +18,7 @@ public class UI_Glyphs_PressThis : MonoBehaviour {
 		// 4 = Y
 
 		// disable on start up
-		faceID = 0;
+		//faceID = 0;
 	}
 	
 	// Update is called once per frame
