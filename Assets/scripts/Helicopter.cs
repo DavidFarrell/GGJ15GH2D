@@ -16,7 +16,7 @@ public class Helicopter : Spell {
 
 
 	// Use this for initialization
-	void Start () {
+	new void Start () {
 		base.Start ();
 		if (clockwise){
 			YWaggle = 1.0f;
