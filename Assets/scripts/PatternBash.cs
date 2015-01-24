@@ -21,8 +21,23 @@ public class PatternBash : MonoBehaviour {
 		oldPresses = copyBool(keyPresses);
 		keyPresses = new bool[]{false,false,false,false};
 
-		//Poll for input
+	
+		pollInput ();
+		
+		if (differentButtons() && !buttonsEmpty()) {
+			if(multiplePresses()) {
+				failPress();
+			}
+			else if (Input.GetButtonDown(getNextButton())) {
+				successPress();
 
+			} else failPress();
+		}
+ 	
+		
+	}
+
+	void pollInput() {
 		if (Input.GetButtonDown("ButtonA")) {
 			keyPresses[0] = true;
 		}
@@ -35,7 +50,38 @@ public class PatternBash : MonoBehaviour {
 		if (Input.GetButtonDown("ButtonY")) {
 			keyPresses[3] = true;
 		}
-		
+	}
+
+	string getNextButton() {
+		if (cursor = pattern.Length) cursor = 0;
+		cursor++;
+
+		return "Button" + pattern[cursor-1];
+	}
+
+	bool buttonsEmpty() {
+		for(int i = 0; i < 4; i++) {
+			if (keyPresses[i]) return false;
+		}
+		return true;
+	}
+
+	//If two keys are pressed the program fails
+	bool multiplePresses() {
+		int multiPress = 0;
+		for (int i = 0; i < 4; i++) {
+			if (keyPresses[i]) multiPress++;
+		}
+		if (multiPress > 1) return true;
+		return false;
+	}
+
+	//Run an XOR check between buttons to determine if the user has made an input
+	bool differentButtons() {
+		for (int i = 0; i < 4; i ++) {
+			if (oldPresses[i] ^ keyPresses[i]) return true;
+		}
+		return false;
 	}
 
 	void successPress(){
