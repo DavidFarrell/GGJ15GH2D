@@ -4,6 +4,8 @@ using System.Collections;
 public class PressureHold : Spell {
 
 	public string triggerChoice; //either "TriggersL" or "TriggersR"
+	public float penaltyTimer = 1.0f;
+	private float penaltyTimerCurrent;
 
 	private float joystickInput;
 	public float scaleFactor = 1;
@@ -31,18 +33,13 @@ public class PressureHold : Spell {
 	}
 
 	 public override bool thresholdCheck(){
-		bool pass = false;
-		if (myPowerBarDual.currentPower > myPowerBarDual.currentMinThreshold && myPowerBarDual.currentPower < myPowerBarDual.currentMaxThreshold) {
-			pass = true;
-		} else {
-			pass = false;
-		}
-		return pass;
+		return (myPowerBarDual.currentPower > myPowerBarDual.currentMinThreshold && myPowerBarDual.currentPower < myPowerBarDual.currentMaxThreshold) ;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		pollInput();
+		if (thresholdCheck()) penaltyTimerCurrent = penaltyTimer;
 		timeDecay = scaleFactor * joystickInput;
 		decayOverTime();
 
@@ -50,15 +47,22 @@ public class PressureHold : Spell {
 						myPowerBarDual.currentPower = 0;
 		if (myPowerBarDual.currentPower > 100)
 						myPowerBarDual.currentPower = 100;
+		if(penaltyTimerCurrent <= 0) {
+			penaltyTimerCurrent = penaltyTimer;
+			modifyFailures(1);
+			Debug.Log ("PressureHold fail");
+		}
 	}
 
 	void pollInput() {
 		joystickInput = Input.GetAxis (triggerChoice);
 	}
 
-	new public void decayOverTime()
+	public override void decayOverTime()
 	{
 		time -= Time.deltaTime;
+		penaltyTimerCurrent -= Time.deltaTime;
+
 		if (time < 0) {
 			modifyPower (timeDecay);
 			time = timeDecaySpeed;

@@ -57,7 +57,7 @@ public class Spell : MonoBehaviour {
 	public virtual void setLeftJoystick (bool isLeft){
 	}
 
-	public void decayOverTime()
+	public virtual void decayOverTime()
 	{
 		time -= Time.deltaTime;
 		if (time < 0) {
