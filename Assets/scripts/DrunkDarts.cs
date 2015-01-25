@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class DrunkDarts : Spell {
 	public bool isLeftStick = true;
@@ -111,5 +112,7 @@ public class DrunkDarts : Spell {
 
 	public override void setLeftJoystick(bool isLeft){
 		isLeftStick = isLeft;
+		GameObject stickText = transform.FindChild("PowerBar/StickID").gameObject;
+		stickText.GetComponent<Text>().text = isLeft ? "LS" : "RS" ;
 	}
 }

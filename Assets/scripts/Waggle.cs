@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+
 
 using System.Collections;
 
@@ -43,8 +45,10 @@ public class Waggle : Spell {
 	}
 
 	public override void setLeftJoystick(bool isLeft) {
-			isLeftStick = isLeft;
-			axis = isLeftStick ?  "L_XAxis" : "R_XAxis";
+		isLeftStick = isLeft;
+		axis = isLeftStick ?  "L_XAxis" : "R_XAxis";
+		GameObject stickText = transform.FindChild("PowerBar/StickID").gameObject;
+		stickText.GetComponent<Text>().text = isLeft ? "LS" : "RS" ;
 	}
 		
 
