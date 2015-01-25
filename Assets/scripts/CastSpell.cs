@@ -21,12 +21,12 @@ public class CastSpell : MonoBehaviour {
 
 		// if they press the button, they better be rigggghhht!
 		if (Input.GetButtonDown ("ButtonMiddle")) {
-						checkStatus ();
-				}
+			checkStatus ();
+		}
 	}
 
 	private bool checkStatus() {
-		if (player1.GetComponentInChildren<Spell> ().thresholdCheck () && player2.GetComponentInChildren<Spell> ().thresholdCheck () && player3.GetComponentInChildren<Spell> ().thresholdCheck () && player4.GetComponentInChildren<Spell> ().thresholdCheck ()) {
+		if (player1.GetComponentInChildren<Spell> ().thresholdCheck () && player2.GetComponentInChildren<Spell> ().thresholdCheck () ) {//&& player3.GetComponentInChildren<Spell> ().thresholdCheck () && player4.GetComponentInChildren<Spell> ().thresholdCheck ()) {
 			Debug.Log ("YOU GOT IT");
 			return true;
 		} else {
