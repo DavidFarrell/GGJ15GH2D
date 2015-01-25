@@ -5,6 +5,7 @@ using System.Collections;
 public class Waggle : Spell {
 	
 	public string axis = "R_XAxis";
+	private bool isLR = true;
 	public bool isLeftStick;
 	private float joystickInput;
 	private float lastWaggle = 1.0f;

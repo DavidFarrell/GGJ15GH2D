@@ -2848,6 +2848,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1133858353}
   - 114: {fileID: 1133858352}
+  - 114: {fileID: 1133858354}
   m_Layer: 0
   m_Name: SpellBook
   m_TagString: Untagged
@@ -2889,6 +2890,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 29
+--- !u!114 &1133858354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1133858351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c232f828b5cbb49488183b34154f1920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 880830903}
+  player2: {fileID: 1232356188}
+  player3: {fileID: 1307018333}
+  player4: {fileID: 316207246}
 --- !u!1 &1172512623
 GameObject:
   m_ObjectHideFlags: 0
