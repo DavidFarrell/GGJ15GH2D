@@ -13,6 +13,7 @@ public class Waggle : Spell {
 	private float joystickInput;
 	private float penaltyInput;
 	private float lastWaggle = 1.0f;
+	private float penaltyCutout = 1.0f;
 
 	
 	// Use this for initialization
@@ -26,6 +27,7 @@ public class Waggle : Spell {
 			modifyPower (powerIncrease);
 		} 
 		decayOverTime ();
+		penaltyCutout -= Time.deltaTime;
 
 	}
 	
@@ -41,9 +43,11 @@ public class Waggle : Spell {
 
 	void checkForPenalty(){
 		penaltyInput = Input.GetAxis (penaltyAxis);
-		if (penaltyInput > 0.8f) penaltyInput = 1;
-		if (penaltyInput < -0.8f) penaltyInput = -1;
+		if ((penaltyInput > 0.8f || penaltyInput < -0.8f) && (penaltyCutout < 0) ) {
+			modifyFailures(1);
+			penaltyCutout = 1.0f;
 		}
+	}
 	
 	public bool waggleChanged(){
 		if (joystickInput == -lastWaggle) {

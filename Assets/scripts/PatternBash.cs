@@ -20,6 +20,8 @@ public class PatternBash : Spell {
 
 	protected int buttonValue; //FaceID variable
 
+	private float penaltyCutout = 1.0f;
+
 	//Mapping of faceIDs to button strings
 	protected Dictionary <string, int> faceDict =
 	new Dictionary<string, int>() {    
@@ -85,6 +87,9 @@ public class PatternBash : Spell {
 			ButtonsOverlay.GetComponent<UI_Glyphs_PressThis>().faceID = buttonValue; //Sets the next correct button to be highlighted.
 		}
 		decayOverTime();
+		penaltyCutout -= Time.deltaTime;
+
+
 		
 	}
 
@@ -150,7 +155,11 @@ public class PatternBash : Spell {
 	}
 	/*multiple presses or wrong presses run this function*/
 	protected void failPress() {
-		modifyPower(-powerDecrease);
+		if (penaltyCutout < 0) {
+			modifyFailures(1);
+			penaltyCutout = 1.0f;
+		}
+		modifyPower(-powerDecrease);		
 	}
 
 	//Deep copy of boolean array for button pressing.
