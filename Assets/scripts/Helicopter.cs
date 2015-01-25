@@ -72,10 +72,10 @@ public class Helicopter : Spell {
 
 	bool checkForBadInput(){
 		if (lastAxis == "X") {
-			if (YAxis = -YWaggle){ // Y axis is same as previous Y Axis
+			if (YAxis == -YWaggle){ // Y axis is same as previous Y Axis
 				return true;
 			}
-		}else if (XAxis = -XWaggle){ // X axis is opposite previous X Axis
+		}else if (XAxis == -XWaggle){ // X axis is opposite previous X Axis
 			return true;
 		}
 		return false;
