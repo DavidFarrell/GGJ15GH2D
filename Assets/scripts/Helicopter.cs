@@ -15,6 +15,8 @@ public class Helicopter : Spell {
 	private float YWaggle;
 
 	private string lastAxis = "Y";
+	private float penaltyCutout = 1.0f;
+
 
 
 	// Use this for initialization
@@ -43,7 +45,13 @@ public class Helicopter : Spell {
 		}
 
 		decayOverTime ();
-//		Debug.Log (currentPower ());
+
+		penaltyCutout -= Time.deltaTime;
+		if (penaltyCutout < 0 && checkForBadInput ()) {
+			modifyFailures(1);
+			penaltyCutout = 1.0f;
+		}
+		//Debug.Log (currentFailures ());
 		
 	}
 
@@ -63,6 +71,13 @@ public class Helicopter : Spell {
 	}
 
 	bool checkForBadInput(){
+		if (lastAxis == "X") {
+			if (YAxis = -YWaggle){ // Y axis is same as previous Y Axis
+				return true;
+			}
+		}else if (XAxis = -XWaggle){ // X axis is opposite previous X Axis
+			return true;
+		}
 		return false;
 	}
 
