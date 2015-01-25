@@ -20,6 +20,7 @@ public class SpellBook : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		assignSpells ();
+
 	}
 	
 	// Update is called once per frame
@@ -28,19 +29,11 @@ public class SpellBook : MonoBehaviour {
 	}
 
 	public void assignSpells(){
+		clearSpells ();
+
 		GameObject leftJoySpell = joystickSpells [Random.Range (0, joystickSpells.Length )];
-
-//		Player1Spell = (GameObject)Instantiate (leftJoySpell);
-//		GameObject player1 = GameObject.Find ("Blue_Wizard");
-//		Player1Spell.transform.parent = player1.transform;
-//		Player1Spell.GetComponent<Spell> ().setLeftJoystick (true);
-
 		GameObject rightJoySpell = joystickSpells [Random.Range (0, joystickSpells.Length )];
-		//leftJoySpell.GetComponent<Spell> ().setLeftJoystick (false);
-
 		GameObject faceSpell = faceSpells [Random.Range (0, faceSpells.Length )];
-
-
 		GameObject triggerSpell = triggerSpells [Random.Range (0, triggerSpells.Length )];
 
 
@@ -55,8 +48,8 @@ public class SpellBook : MonoBehaviour {
 		List<string> players = new List<string> (){
 			"Player1_Widget_SpawnPoint", "Player2_Widget_SpawnPoint", "Player3_Widget_SpawnPoint", "Player4_Widget_SpawnPoint"};
 
-
-	//	Shuffle (players);
+		// players should get different spell types each round
+		Shuffle (players);
 
 
 		Player1Spell = (GameObject)Instantiate (leftJoySpell);
@@ -97,6 +90,17 @@ public class SpellBook : MonoBehaviour {
 			spellList[i] = spellList[randomIndex];
 			spellList[randomIndex] = temp;
 		}
+	}
+
+	void clearSpells(){
+		if (Player1Spell != null)
+			Destroy (Player1Spell);
+		if (Player2Spell != null)
+			Destroy (Player2Spell);
+		if (Player3Spell != null)
+			Destroy (Player3Spell);
+		if (Player4Spell != null)
+			Destroy (Player4Spell);
 	}
 	
 }

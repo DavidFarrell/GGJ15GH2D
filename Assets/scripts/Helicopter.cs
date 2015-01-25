@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Helicopter : Spell {
@@ -67,6 +68,8 @@ public class Helicopter : Spell {
 
 	public override void setLeftJoystick(bool isLeft){
 		isLeftStick = isLeft;
+		GameObject stickText = transform.FindChild("PowerBar/StickID").gameObject;
+		stickText.GetComponent<Text>().text = isLeft ? "LS" : "RS" ;
 		}
 
 	// overrides
