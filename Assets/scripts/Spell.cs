@@ -5,7 +5,6 @@ public class Spell : MonoBehaviour {
 
 	public float timeDecay = -1.0f;
 	public float timeDecaySpeed = 0.5f;
-	//public int powerTarget = 100;
 	public float powerIncrease = 5.0f;
 	public float powerDecrease = 10.0f;
 
