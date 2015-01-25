@@ -28,6 +28,9 @@ public class DrunkDarts : Spell {
 	 	
 	public float drunkBounds = 1.5f;
 
+	public float drunkInvincibility = 1;
+	public float currentInvincibility = 0;
+
 	// Use this for initialization
 	new void Start () {
 		base.Start ();
@@ -81,6 +84,17 @@ public class DrunkDarts : Spell {
 		Vector2 temp = new Vector2 (0, 0);
 		temp.x =  Mathf.Clamp (myPlayer.transform.localPosition.x, -drunkBounds, drunkBounds);
 		temp.y =  Mathf.Clamp (myPlayer.transform.localPosition.y, -drunkBounds, drunkBounds);
+
+
+		currentInvincibility -= Time.deltaTime;
+		if (Vector2.Distance (myPlayer.transform.localPosition, temp) > 0) {
+			if (currentInvincibility <= 0) {
+				modifyFailures(1);
+				currentInvincibility=drunkInvincibility;
+
+			}
+		}
+
 		myPlayer.transform.localPosition = temp;
 
 
